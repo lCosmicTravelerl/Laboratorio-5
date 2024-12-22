@@ -8,8 +8,7 @@
 using namespace std;
 
 //******************************************
-typedef struct TArticulo
-{
+typedef struct TArticulo{
 	int Codigo;
 	char Nombre[20];
 	int Disponible;
