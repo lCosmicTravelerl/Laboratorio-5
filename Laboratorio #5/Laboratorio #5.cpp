@@ -276,13 +276,10 @@ void main(int argc, char* argv[]){
 						case 1:{// ENCOLAR
 							system("CLS");
 							cout << "Haciendo Encolar de 50 elementos" << endl;
-
-							for (i = 1; i <= 50; i++){
-								Nuevo = CrearArticulo(i, i, i);
-								Encolar(Cola_Pasajeros, Nuevo);
-								cout << "Se acaba de hacer ENCOLAR al final de la Cola de : "<<  Nuevo->Codigo << endl;
-							}
-					
+							ContadorDeEncolar = ContadorDeEncolar + 1;
+							Nuevo = CrearArticulo(ContadorDeEncolar, ContadorDeEncolar, ContadorDeEncolar);
+							Encolar(Cola_Pasajeros, Nuevo);
+							cout << "Se acaba de hacer ENCOLAR al final de la Cola de : "<<  Nuevo->Codigo << endl;
 							system("pause");
 							break;
 						}
