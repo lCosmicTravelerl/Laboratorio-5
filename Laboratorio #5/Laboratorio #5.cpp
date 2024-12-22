@@ -178,7 +178,7 @@ PtrTArticulo Descolar(PtrTArticulo &Lista){
     return Aux;
 }
 
-void main(int argc, char* argv[]){
+void main(int argc, char* argv[]) {
 	//************************************************************************
 	PtrTArticulo Pila_Llantas;
 	PtrTArticulo Cola_Pasajeros; // de Bus
@@ -190,7 +190,9 @@ void main(int argc, char* argv[]){
 	InicializarInventario(Cola_Pasajeros);
 	int opc;
 	bool menu = true;
-	while (menu){
+	int ContadorDePush = 0;
+	int ContadorDeEncolar = 0;
+	while (menu) {
 		system("CLS");
 		cout << " ********* Menu de pila *********" << endl << endl;
 		cout << "  1. Usar Pila" << endl;
@@ -198,151 +200,202 @@ void main(int argc, char* argv[]){
 		cout << "  3. Salir" << endl;
 		cout << endl << "	Digite la opcion: ";
 		cin >> opc;
-		switch (opc){
-			case 1:{
-				int opc;
-				bool menu = true;
-				while (menu){
-					system("CLS");
-					cout << " ********* Submenu de pila *********" << endl << endl;
-					cout << "  1. Push" << endl; //
-					cout << "  2. Top" << endl;
-					cout << "  3. Pop" << endl;
-					cout << "  4. Salir" << endl;
-					cout << endl << "	Digite la opcion: ";
-					cin >> opc;
-					switch (opc){
-						case 1:{// INSERTANDO CON PUSH
-							system("CLS");
-							cout << "Haciendo Push de 100 elementos" << endl;
-							for (i = 1; i <= 100; i++){
-								Nuevo = CrearArticulo(i, i, i);
-								Push(Pila_Llantas, Nuevo);
-								cout << "Se acaba de hacer PUSH, el Top de la Pila ahora es: " << endl << Top(Pila_Llantas)->Codigo << endl;
-							}
-							system("pause");
-							break;
-						}
-						case 2:{// PREGUNTANDO POR EL TOP
-							system("CLS");
-							if (Top(Pila_Llantas) != NULL) {
-								cout << "El Top de la Pila es: " << endl << Top(Pila_Llantas)->Codigo << endl;
-							}	
-							else {
-								cout << "El Top de la Pila es: NULO " << endl;
-							}
-							system("pause");
-							break;
-						}
-						case 3:{ //SACANDO CON POP
-							system("CLS");
-							PtrTArticulo Aux = Pop(Pila_Llantas);
-							if (Top(Pila_Llantas) != NULL) {
-								cout << "Se acaba de hacer POP, el Top de la Pila ahora es: " << endl << Top(Pila_Llantas)->Codigo << endl;
-							}
-							else {
-								cout << "Se acaba de hacer POP, el Top de la Pila ahora es:  NULO " << endl;
-							}
-							system("pause");
-							break;
-						}
-						case 4:{// SALIENDO Y DEVOLVIENDO MEMORIA DINAMICA
-							system("CLS");
-							menu = false;
-							system("CLS");
-							cout << "Liberando memoria ... " << endl << endl << endl;
-							DestruirInventario(Pila_Llantas);
-							system("Pause");
-							break;
-						}
-					}
-				}
-				system("pause");
-				break;
-			}
-			case 2:{
-				int opc;
-				bool menu = true;
-				while (menu){
-					system("CLS");
-					cout << " ********* Submenu de cola *********" << endl << endl;
-					cout << "  1. Encolar" << endl;
-					cout << "  2. Primero" << endl;
-					cout << "  3. Descolar" << endl;
-					cout << "  4. Salir" << endl;
-					cout << endl << "	Digite la opcion: ";
-					cin >> opc;
-					switch (opc){
-						case 1:{// ENCOLAR
-							system("CLS");
-							cout << "Haciendo Encolar de 50 elementos" << endl;
-							ContadorDeEncolar = ContadorDeEncolar + 1;
-							Nuevo = CrearArticulo(ContadorDeEncolar, ContadorDeEncolar, ContadorDeEncolar);
-							Encolar(Cola_Pasajeros, Nuevo);
-							cout << "Se acaba de hacer ENCOLAR al final de la Cola de : "<<  Nuevo->Codigo << endl;
-							system("pause");
-							break;
-						}
-						case 2:{// PRIMERO
-							system("CLS");
-							cout<<"El primero que va a ser atendido de la cola es : " << Primero(Cola_Pasajeros)->Codigo << endl ;
-							system("pause");
-							break;
-						}
-						case 3:{// DESCOLAR
-							system("CLS");
-
-							PtrTArticulo Aux = Descolar(Cola_Pasajeros);
-
-							if (Primero(Cola_Pasajeros) != NULL) {
-								cout << "Se acaba de hacer DESCOLAR, el nuevo primero  de la Cola ahora es: " << endl << Primero(Cola_Pasajeros)->Codigo << endl;
-							}
-							else {
-								cout << "Se acaba de hacer DESCOLAR, el primero de la Cola ahora es:  NULO " << endl;
-							}
-
-							system("pause");
-							break;
-						}
-						case 4:{// SALIENDO Y DEVOLVIENDO MEMORIA DINAMICA
-							menu = false;
-							system("CLS");
-							cout << "Liberando memoria ... " << endl << endl << endl;
-							DestruirInventario(Cola_Pasajeros);
-							system("Pause");
-							break;
-						}
-					}
-				}
-				system("pause");
-				break;
-			}
-			case 3:{
-				menu = false;
+		switch (opc) {
+		case 1: {
+			int opc;
+			bool menu = true;
+			while (menu) {
 				system("CLS");
-				cout << "Opcion 5: saliendo . . ." << endl << endl << endl;
-				cout << "ADIOS!!!" << endl;
-				system("Pause");
-				break;
+				cout << " ********* Submenu de pila *********" << endl << endl;
+				cout << "  1. Push" << endl; //
+				cout << "  2. Top" << endl;
+				cout << "  3. Pop" << endl;
+				cout << "  4. Salir" << endl;
+				cout << endl << "	Digite la opcion: ";
+				cin >> opc;
+				switch (opc) {
+				case 1: {// INSERTANDO CON PUSH
+					system("CLS");
+					ContadorDePush = ContadorDePush + 1;
+					Nuevo = CrearArticulo(ContadorDePush, ContadorDePush, ContadorDePush);
+					Push(Pila_Llantas, Nuevo);
+					cout << "Se acaba de hacer PUSH, el Top de la Pila ahora es: " << endl << Top(Pila_Llantas)->Codigo << endl;
+					system("pause");
+					break;
+				}
+				case 2: {// PREGUNTANDO POR EL TOP
+					system("CLS");
+					if (Top(Pila_Llantas) != NULL) {
+						cout << "El Top de la Pila es: " << endl << Top(Pila_Llantas)->Codigo << endl;
+					}
+					else {
+						cout << "El Top de la Pila es: NULO " << endl;
+					}
+					system("pause");
+					break;
+				}
+				case 3: { //SACANDO CON POP
+					system("CLS");
+
+					if (Top(Pila_Llantas) != NULL && Top(Pila_Llantas)->Siguiente != NULL) {
+						Pop(Pila_Llantas);
+						cout << "Se acaba de hacer POP, el Top de la Pila ahora es: " << endl << Top(Pila_Llantas)->Codigo << endl;
+					}
+					else if (Top(Pila_Llantas) != NULL && Top(Pila_Llantas)->Siguiente == NULL) {
+						Pop(Pila_Llantas);
+						cout << "Se acaba de hacer POP, solo habia un elemento en la Pila por lo cual ahora Top es: NULO" << endl;
+					}
+					else {
+						cout << "Se acaba de hacer POP, el Top de la Pila ahora es:  NULO " << endl;
+					}
+					system("pause");
+					
+					break;
+				}
+				case 4: {// SALIENDO Y DEVOLVIENDO MEMORIA DINAMICA
+					system("CLS");
+					menu = false;
+					system("CLS");
+					cout << "Liberando memoria ... " << endl << endl << endl;
+					ContadorDePush = 0;
+					DestruirInventario(Pila_Llantas);
+					system("Pause");
+					break;
+				}
+				}
 			}
+			system("pause");
+			break;
+		}
+		case 2: {
+			int opc;
+			bool menu = true;
+			while (menu) {
+				system("CLS");
+				cout << " ********* Submenu de cola *********" << endl << endl;
+				cout << "  1. Encolar" << endl;
+				cout << "  2. Primero" << endl;
+				cout << "  3. Descolar" << endl;
+				cout << "  4. Salir" << endl;
+				cout << endl << "	Digite la opcion: ";
+				cin >> opc;
+				switch (opc) {
+				case 1: {// ENCOLAR
+					system("CLS");
+					ContadorDeEncolar = ContadorDeEncolar + 1;
+					Nuevo = CrearArticulo(ContadorDeEncolar, ContadorDeEncolar, ContadorDeEncolar);
+					Encolar(Cola_Pasajeros, Nuevo);
+					cout << "Se acaba de hacer ENCOLAR al final de la Cola de : " << endl << Nuevo->Codigo << endl;
+					system("pause");
+					break;
+				}
+				case 2: {// PRIMERO
+					system("CLS");
+					if (Primero(Cola_Pasajeros) != NULL){
+						cout << "El primero que va a ser atendido de la cola es : " << endl << Primero(Cola_Pasajeros)->Codigo << endl;
+					}
+					else{
+						cout << "No hay gente en la cola" << endl;
+					}
+					system("pause");
+					break;
+				}
+				case 3: {// DESCOLAR
+					system("CLS");
+
+					if (Primero(Cola_Pasajeros) != NULL && Primero(Cola_Pasajeros)->Siguiente != NULL) {
+						Descolar(Cola_Pasajeros);
+						cout << "Se acaba de hacer DESCOLAR, el nuevo primero de la Cola ahora es: " << endl << Primero(Cola_Pasajeros)->Codigo << endl;
+					}
+					else if (Primero(Cola_Pasajeros) != NULL && Primero(Cola_Pasajeros)->Siguiente == NULL) {
+						Descolar(Cola_Pasajeros);
+						cout << "Se acaba de hacer DESCOLAR, solo habia un elemento en la lista por lo cual ahora el primero es: NULO" << endl;
+					}
+					else {
+						cout << "Se acaba de hacer DESCOLAR, el primero de la Cola ahora es:  NULO " << endl;
+					}
+
+					system("pause");
+					break;
+				}
+				case 4: {// SALIENDO Y DEVOLVIENDO MEMORIA DINAMICA
+					menu = false;
+					system("CLS");
+					cout << "Liberando memoria ... " << endl << endl << endl;
+					ContadorDeEncolar = 0;
+					DestruirInventario(Cola_Pasajeros);
+					system("Pause");
+					break;
+				}
+				}
+			}
+			system("pause");
+			break;
+		}
+		case 3: {
+			menu = false;
+			system("CLS");
+			cout << "Opcion 5: saliendo . . ." << endl << endl << endl;
+			cout << "ADIOS!!!" << endl;
+			system("Pause");
+			break;
+		}
 		}
 	}
 }
-//Prueba de funcionamiento numero 1
+/*
+	CONSIDERACION PARA EL PROFESOR:
+		-Se acomodo algunas partes del codigo para poder ser mas facilmente legible
+
+		-Se cambiaron las funciones POP y DESCOLAR, debido a que estas daban error al intentar usarlas cuando no habia ningun elemento, o solo un elemento
+		 en la pila o cola respectiva
+
+		-Se arreglo la funcion PRIMERO debido a que esta daba error cuando no habia elementos en la cola, esto debido a que no hacia la comprobaciona antes de mostrar
+		 el elemento en pantalla
+*/
 
 // Pruebas del funcionamiento de PILA
 
 /*
 Consola:
-	FUNCION TOP:
- 
-	El Top de la Pila es:
-	100
+	FUNCION PUSH:
+
+	Se acaba de hacer PUSH, el Top de la Pila ahora es:
+	1
 	Presione una tecla para continuar . . .
 
- 	FUNCION POP:
-  
+	FUNCION TOP:
+
+	El Top de la Pila es:
+	10
+	Presione una tecla para continuar . . .
+
+	FUNCION POP:
+
 	Se acaba de hacer POP, el Top de la Pila ahora es:
-	99
+	9
+	Presione una tecla para continuar . . .
+*/
+
+// Pruebas del funcionamiento de COLA
+
+/*
+Consola:
+	FUNCION ENCOLAR:
+
+	Se acaba de hacer ENCOLAR al final de la Cola de :
+	1
+	Presione una tecla para continuar . . .
+
+	FUNCION PRIMERO
+
+	El primero que va a ser atendido de la cola es :
+	1
+	Presione una tecla para continuar . . .
+
+	FUNCION DESCOLAR
+
+	Se acaba de hacer DESCOLAR, el nuevo primero de la Cola ahora es:
+	2
 	Presione una tecla para continuar . . .
 */
