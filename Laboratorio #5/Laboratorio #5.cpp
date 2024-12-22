@@ -53,26 +53,26 @@ PtrTArticulo CrearArticulo(int NCodigo, int NDisponible, float NPrecio) {
 	return Pieza;                        // Retorna el puntero al nuevo artículo creado.
 }
 
-void AgregarInicioInventario(PtrTArticulo &Lista, PtrTArticulo &Nuevo){
-	Nuevo->Siguiente = Lista;
-	Lista = Nuevo;
+void AgregarInicioInventario(PtrTArticulo &Lista, PtrTArticulo &Nuevo){ // Funcion que agrega un elemento nuevo al principio del inventario
+	Nuevo->Siguiente = Lista; // Se le asigna al puntero "Nuevo" el inicio de la lista como siguiente
+	Lista = Nuevo; // Se iguala este nuevo puntero cal inicio de la lista
 }
 
-void AgregarFinalInventario(PtrTArticulo &Lista, PtrTArticulo &Nuevo){
-	PtrTArticulo Aux;
-	Aux = Lista;
-	if (Aux != NULL){
-		while (Aux->Siguiente != NULL){
+void AgregarFinalInventario(PtrTArticulo &Lista, PtrTArticulo &Nuevo){ // Funcion que agrega un elemento nuevo al final del inventario
+	PtrTArticulo Aux; // Se crea un puntero auxiliar para recorrer la lista hasta el final
+	Aux = Lista; // Se le asigna como direccion el inicio de la lista
+	if (Aux != NULL){ // Si la lista no esta vacia...
+		while (Aux->Siguiente != NULL){ // Se recorre hasta el final
 			Aux = Aux->Siguiente;
 		}
-		Aux->Siguiente = Nuevo;
+		Aux->Siguiente = Nuevo; // Y en el final se le agrega el nuevo elemento
 	}
 	else{
-		Lista = Nuevo;
+		Lista = Nuevo; // Si esta vacia se agrega el nuevo elemento simplemente
 	}
 }
 
-void ListarInventario(PtrTArticulo &Lista){
+void ListarInventario(PtrTArticulo &Lista){ // Lista los elementos del inventario
 	int Contador = 1;
 	PtrTArticulo Aux;
 	Aux = Lista;
@@ -87,11 +87,11 @@ void ListarInventario(PtrTArticulo &Lista){
 	}
 }
 
-PtrTArticulo BuscarArticulo(PtrTArticulo &Lista, int cual){
+PtrTArticulo BuscarArticulo(PtrTArticulo &Lista, int cual){ // Busca un articulo en especifico dentro del inventario (Funcion sin actualizar, en este estado no hace nada)
 	return Lista;
 }
 
-void GuardarInventario(PtrTArticulo Lista){
+void GuardarInventario(PtrTArticulo Lista){ // Funcion que guarda el inventario en un archivo de texto
 	FILE *archivo;
 	fopen_s(&archivo, "ARCHIVO.txt", "w+");
 	if (NULL == archivo){
@@ -110,7 +110,7 @@ void GuardarInventario(PtrTArticulo Lista){
 	fclose(archivo);
 }
 
-void CargarInventario(PtrTArticulo &Lista){
+void CargarInventario(PtrTArticulo &Lista){ // Funcion que carga el inventario desde un archivo de texto
 	PtrTArticulo Nuevo;
 	FILE *archivo;
 	fopen_s(&archivo, "ARCHIVO.txt", "r");
