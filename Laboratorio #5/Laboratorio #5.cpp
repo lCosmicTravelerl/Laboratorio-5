@@ -6,7 +6,7 @@
 #include <iostream>
 
 using namespace std;
-Hola como estan
+
 //******************************************
 typedef struct TArticulo
 {
