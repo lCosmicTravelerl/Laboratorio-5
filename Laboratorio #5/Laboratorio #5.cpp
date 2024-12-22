@@ -134,34 +134,48 @@ void CargarInventario(PtrTArticulo &Lista){
 	fclose(archivo);
 }
 
-void Push(PtrTArticulo &Lista, PtrTArticulo Nuevo){ //AQUi Marco
-	AgregarInicioInventario(Lista, Nuevo);
+void Push(PtrTArticulo &Lista, PtrTArticulo Nuevo){
+    // Esta función agrega un nuevo artículo al principio de la lista.
+    // Utiliza la función AgregarInicioInventario para enlazar el nuevo artículo con la cabeza de la lista.
+    AgregarInicioInventario(Lista, Nuevo);
 }
 
-PtrTArticulo Top(PtrTArticulo &Lista){ //AQUI HEILYN
-	return Lista;
+PtrTArticulo Top(PtrTArticulo &Lista){
+    // Esta función devuelve el primer artículo en la lista, es decir, la cabeza de la lista.
+    // No modifica la lista, solo devuelve el puntero al primer nodo.
+    return Lista;
 }
 
-PtrTArticulo Pop(PtrTArticulo &Lista){ //AQUI HEILYN
-	PtrTArticulo Aux = Lista;
-	Lista = Lista->Siguiente;
-	Aux->Siguiente = NULL;
-	return Aux;
+PtrTArticulo Pop(PtrTArticulo &Lista){
+    // Esta función elimina el primer artículo de la lista.
+    // Guarda la cabeza de la lista en 'Aux', luego actualiza la cabeza de la lista al siguiente artículo.
+    // Establece el puntero 'Siguiente' de 'Aux' como NULL y devuelve el artículo eliminado.
+    PtrTArticulo Aux = Lista;
+    Lista = Lista->Siguiente;
+    Aux->Siguiente = NULL;
+    return Aux;
 }
 
-void Encolar(PtrTArticulo &Lista, PtrTArticulo Nuevo){ //AQUI HEILYN
-	AgregarFinalInventario(Lista, Nuevo);
+void Encolar(PtrTArticulo &Lista, PtrTArticulo Nuevo){
+    // Esta función agrega un nuevo artículo al final de la lista.
+    // Utiliza la función AgregarFinalInventario para enlazar el nuevo artículo al final de la lista.
+    AgregarFinalInventario(Lista, Nuevo);
 }
 
-PtrTArticulo Primero(PtrTArticulo &Lista){ //AQUI HEILYN
-	return Lista;
+PtrTArticulo Primero(PtrTArticulo &Lista){
+    // Esta función devuelve el primer artículo en la lista (la cabeza).
+    // No modifica la lista, solo retorna el puntero al primer nodo.
+    return Lista;
 }
 
-PtrTArticulo Descolar(PtrTArticulo &Lista){ //AQUI HEILYN
-	PtrTArticulo Aux = Lista;
-	Lista = Lista->Siguiente;
-	Aux->Siguiente = NULL;
-	return Aux;
+PtrTArticulo Descolar(PtrTArticulo &Lista){
+    // Esta función elimina el primer artículo de la lista, similar a 'Pop'.
+    // Guarda la cabeza de la lista en 'Aux', luego actualiza la cabeza de la lista al siguiente artículo.
+    // Establece el puntero 'Siguiente' de 'Aux' como NULL y devuelve el artículo eliminado.
+    PtrTArticulo Aux = Lista;
+    Lista = Lista->Siguiente;
+    Aux->Siguiente = NULL;
+    return Aux;
 }
 
 void main(int argc, char* argv[]){
