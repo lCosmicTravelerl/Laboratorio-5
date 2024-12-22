@@ -1,4 +1,4 @@
-// Pila_Cola.cpp: define el punto de entrada de la aplicación de consola.
+// Pila_Cola.cpp: define el punto de entrada de la aplicaciÃ³n de consola.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,7 +6,7 @@
 #include <iostream>
 
 using namespace std;
-
+Hola como estan
 //******************************************
 typedef struct TArticulo
 {
