@@ -17,7 +17,7 @@ typedef struct TArticulo{
 }*PtrTArticulo;
 
 //******************************************
-int i;  //parametro global
+int i; //parametro global
 
 void InicializarInventario(PtrTArticulo &Lista){
 	Lista = NULL;
