@@ -134,30 +134,30 @@ void CargarInventario(PtrTArticulo &Lista){
 	fclose(archivo);
 }
 
-void Push(PtrTArticulo &Lista, PtrTArticulo Nuevo){
+void Push(PtrTArticulo &Lista, PtrTArticulo Nuevo){ //AQUI HEILYN
 	AgregarInicioInventario(Lista, Nuevo);
 }
 
-PtrTArticulo Top(PtrTArticulo &Lista){
+PtrTArticulo Top(PtrTArticulo &Lista){ //AQUI HEILYN
 	return Lista;
 }
 
-PtrTArticulo Pop(PtrTArticulo &Lista){
+PtrTArticulo Pop(PtrTArticulo &Lista){ //AQUI HEILYN
 	PtrTArticulo Aux = Lista;
 	Lista = Lista->Siguiente;
 	Aux->Siguiente = NULL;
 	return Aux;
 }
 
-void Encolar(PtrTArticulo &Lista, PtrTArticulo Nuevo){
+void Encolar(PtrTArticulo &Lista, PtrTArticulo Nuevo){ //AQUI HEILYN
 	AgregarFinalInventario(Lista, Nuevo);
 }
 
-PtrTArticulo Primero(PtrTArticulo &Lista){
+PtrTArticulo Primero(PtrTArticulo &Lista){ //AQUI HEILYN
 	return Lista;
 }
 
-PtrTArticulo Descolar(PtrTArticulo &Lista){
+PtrTArticulo Descolar(PtrTArticulo &Lista){ //AQUI HEILYN
 	PtrTArticulo Aux = Lista;
 	Lista = Lista->Siguiente;
 	Aux->Siguiente = NULL;
@@ -180,7 +180,7 @@ void main(int argc, char* argv[]){
 		system("CLS");
 		cout << " ********* Menu de pila *********" << endl << endl;
 		cout << "  1. Usar Pila" << endl;
-		cout << "  2. Usar cola" << endl;
+		cout << "  2. Usar Cola" << endl;
 		cout << "  3. Salir" << endl;
 		cout << endl << "	Digite la opcion: ";
 		cin >> opc;
@@ -191,7 +191,7 @@ void main(int argc, char* argv[]){
 				while (menu){
 					system("CLS");
 					cout << " ********* Submenu de pila *********" << endl << endl;
-					cout << "  1. Push de 100 elementos" << endl;
+					cout << "  1. Push" << endl; //
 					cout << "  2. Top" << endl;
 					cout << "  3. Pop" << endl;
 					cout << "  4. Salir" << endl;
@@ -318,3 +318,20 @@ void main(int argc, char* argv[]){
 	}
 }
 //Prueba de funcionamiento numero 1
+
+// Pruebas del funcionamiento de PILA
+
+/*
+Consola:
+	FUNCION TOP:
+ 
+	El Top de la Pila es:
+	100
+	Presione una tecla para continuar . . .
+
+ 	FUNCION POP:
+  
+	Se acaba de hacer POP, el Top de la Pila ahora es:
+	99
+	Presione una tecla para continuar . . .
+*/
