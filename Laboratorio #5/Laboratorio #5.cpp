@@ -313,4 +313,62 @@ void main(int argc, char* argv[]){
 		}
 	}
 }
-//Prueba de funcionamiento numero 1
+
+
+//Ejemplo del funcionamiento
+/*
+* Parte #1: Menú
+ ********* Menu de pila *********
+
+  1. Usar Pila
+  2. Usar cola
+  3. Salir
+
+		Digite la opcion:
+
+* Parte #2: Submenú de Pila
+
+ ********* Submenu de pila *********
+
+  1. Push de 100 elementos
+  2. Top
+  3. Pop
+  4. Salir
+
+		Digite la opcion:
+
+
+* Parte #3: Pila, Push de 100 elementos
+Haciendo Push de 100 elementos
+Se acaba de hacer PUSH, el Top de la Pila ahora es:
+1
+#Se hace lo mismo hasta el número 100
+* Parte #4:Pila, top
+El Top de la Pila es:
+100
+
+* Parte #5: Pila, pop
+Se acaba de hacer POP, el Top de la Pila ahora es:
+98
+
+* Parte #6: Cola, Submenú de Cola
+ ********* Submenu de cola *********
+
+  1. Encolar
+  2. Primero
+  3. Descolar
+  4. Salir
+
+		Digite la opcion:
+
+* Parte #7: Cola,  Encolar
+Haciendo Encolar de 50 elementos
+Se acaba de hacer ENCOLAR al final de la Cola de : 1
+#Así hasta llegar al elemento 50
+
+* Parte #8: Cola, primero
+El primero que va a ser atendido de la cola es : 1
+* Parte #9: Cola, Descolar
+Se acaba de hacer DESCOLAR, el nuevo primero  de la Cola ahora es:
+2
+*/
