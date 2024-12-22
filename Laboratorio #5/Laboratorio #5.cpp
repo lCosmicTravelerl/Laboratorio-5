@@ -1,52 +1,56 @@
 // Pila_Cola.cpp: define el punto de entrada de la aplicación de consola.
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <iostream>
+// Inclusión de las librerías necesarias
+#include <stdio.h>      // Para funciones estándar de entrada/salida (printf, scanf, etc.).
+#include <stdlib.h>     // Para funciones estándar como malloc, free, etc.
+#include <string.h>     // Para manipulación de cadenas de caracteres.
+#include <iostream>     // Para entrada/salida con cin y cout.
 
-using namespace std;
+using namespace std;    // Permite usar funciones del espacio de nombres std sin prefijo (ej. cout en vez de std::cout).
 
-//******************************************
-typedef struct TArticulo{
-	int Codigo;
-	char Nombre[20];
-	int Disponible;
-	float Precio;
-	TArticulo *Siguiente;
-}*PtrTArticulo;
+// Definición de la estructura TArticulo, que representa un artículo en el inventario
+typedef struct TArticulo {
+	int Codigo;               // Código único del artículo.
+	char Nombre[20];          // Nombre del artículo (hasta 20 caracteres).
+	int Disponible;           // Cantidad disponible del artículo.
+	float Precio;             // Precio del artículo.
+	TArticulo* Siguiente;     // Puntero al siguiente artículo (para listas enlazadas).
+} *PtrTArticulo;              // PtrTArticulo es un alias para punteros a TArticulo.
 
-//******************************************
-int i; //parametro global
+// Declaración de una variable global
+int i;  // Variable global (no se usa en el fragmento proporcionado, pero podría emplearse en otros apartados del código).
 
-void InicializarInventario(PtrTArticulo &Lista){
-	Lista = NULL;
+// Función para inicializar el inventario
+void InicializarInventario(PtrTArticulo& Lista) {
+	Lista = NULL; // Se inicializa la lista como vacía asignando NULL.
 }
 
-void DestruirInventario(PtrTArticulo &Lista){
-	PtrTArticulo Aux;
-	Aux = Lista;
-	while (Aux != NULL){
-		Lista = Lista->Siguiente;
-		delete(Aux);
-		Aux = Lista;
+// Función para liberar la memoria de todos los nodos en el inventario
+void DestruirInventario(PtrTArticulo& Lista) {
+	PtrTArticulo Aux;          // Puntero auxiliar para recorrer la lista.
+	Aux = Lista;               // Asigna el inicio de la lista al puntero auxiliar.
+	while (Aux != NULL) {      // Mientras el puntero auxiliar no sea NULL...
+		Lista = Lista->Siguiente; // Avanza al siguiente nodo en la lista.
+		delete(Aux);           // Libera la memoria del nodo actual.
+		Aux = Lista;           // Actualiza el puntero auxiliar al siguiente nodo.
 	}
 }
 
-PtrTArticulo CrearArticulo(int NCodigo, int NDisponible, float NPrecio){
-	PtrTArticulo Pieza = new(TArticulo);
-	char buffer[5];
+// Función para crear un nuevo artículo en el inventario
+PtrTArticulo CrearArticulo(int NCodigo, int NDisponible, float NPrecio) {
+	PtrTArticulo Pieza = new(TArticulo); // Reserva memoria para un nuevo nodo tipo TArticulo.
+	char buffer[5];                      // Arreglo temporal para convertir el código a cadena.
 
-	Pieza->Codigo = NCodigo;
-	Pieza->Disponible = NDisponible;
-	Pieza->Precio = NPrecio;
+	Pieza->Codigo = NCodigo;             // Asigna el código único del artículo.
+	Pieza->Disponible = NDisponible;     // Asigna la cantidad disponible.
+	Pieza->Precio = NPrecio;             // Asigna el precio del artículo.
 
-	strcpy_s(Pieza->Nombre, "Pieza");
-	_itoa_s(NCodigo, buffer, 10);
-	strcat_s(Pieza->Nombre, buffer);
+	strcpy_s(Pieza->Nombre, "Pieza");    // Copia "Pieza" al campo Nombre del artículo.
+	_itoa_s(NCodigo, buffer, 10);        // Convierte el código (NCodigo) a una cadena y la almacena en buffer.
+	strcat_s(Pieza->Nombre, buffer);     // Concadena el código convertido al nombre "Pieza".
 
-	Pieza->Siguiente = NULL;
-	return Pieza;
+	Pieza->Siguiente = NULL;             // Inicializa el puntero Siguiente como NULL (el artículo aún no está enlazado).
+	return Pieza;                        // Retorna el puntero al nuevo artículo creado.
 }
 
 void AgregarInicioInventario(PtrTArticulo &Lista, PtrTArticulo &Nuevo){
