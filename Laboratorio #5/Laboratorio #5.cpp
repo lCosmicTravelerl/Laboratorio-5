@@ -352,6 +352,8 @@ void main(int argc, char* argv[]) {
 
 		-Se arreglo la funcion PRIMERO debido a que esta daba error cuando no habia elementos en la cola, esto debido a que no hacia la comprobaciona antes de mostrar
 		 el elemento en pantalla
+
+   		-Tambien se agregaron elementos como finales de linea (endl) en ciertas partes de las funciones para conservar la forma en la que aparecian en consola funciones parecidas
 */
 
 // Pruebas del funcionamiento de PILA
