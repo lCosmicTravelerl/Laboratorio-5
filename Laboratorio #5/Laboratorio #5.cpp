@@ -134,7 +134,7 @@ void CargarInventario(PtrTArticulo &Lista){
 	fclose(archivo);
 }
 
-void Push(PtrTArticulo &Lista, PtrTArticulo Nuevo){ //AQUI HEILYN
+void Push(PtrTArticulo &Lista, PtrTArticulo Nuevo){ //AQUi Marco
 	AgregarInicioInventario(Lista, Nuevo);
 }
 
